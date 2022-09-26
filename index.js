@@ -7,7 +7,13 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
 }).addTo(map);
 
-var marker = L.marker([0, 0]).addTo(map);
+let myMapIcon = L.icon({
+    iconUrl: './assets/iss_icon.png',
+    iconSize: [50, 32],
+    iconAnchor: [25, 16],
+});
+
+var marker = L.marker([0, 0], { icon: myMapIcon }).addTo(map);
 let initialCall = true;
 async function getData() {
     let response = await fetch(api_url);
